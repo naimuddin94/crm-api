@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const globalErrorHandler = require("./lib/globalErrorHandler");
 const userRouter = require("./routes/userRoute");
 const customerRouter = require("./routes/customerRoute");
@@ -9,7 +10,13 @@ const expenseRouter = require("./routes/expenseRoute");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/customers", customerRouter);

@@ -1,4 +1,4 @@
-const { User } = require("../lib/userHandler");
+const User = require("../models/userSchema");
 
 const verifyAdmin = async (req, res, next) => {
   try {

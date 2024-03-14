@@ -8,6 +8,7 @@ const {
   getUserRoleFn,
 } = require("../lib/handerFunc");
 const User = require("../models/userSchema");
+const { createAuthCookie } = require("../lib/userTokenHandler");
 
 const userRouter = express.Router();
 
