@@ -5,15 +5,17 @@ const userRouter = require("./routes/userRoute");
 const customerRouter = require("./routes/customerRoute");
 const projectRouter = require("./routes/projectRoute");
 const taskRouter = require("./routes/taskRoute");
+const expenseRouter = require("./routes/expenseRoute");
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/api/users", userRouter);
-app.use("/api/customers", customerRouter);
-app.use("/api/projects", projectRouter);
-app.use("/api/tasks", taskRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/customers", customerRouter);
+app.use("/api/v1/projects", projectRouter);
+app.use("/api/v1/tasks", taskRouter);
+app.use("/api/v1/expenses", expenseRouter);
 
 app.get("/", (req, res) => {
   res.send("crm api is running....");
