@@ -19,7 +19,7 @@ const projectSchema = new mongoose.Schema({
   },
   customer: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Customer",
+    ref: "Customer", // Reference to the Customer model
     required: true,
   },
   created_at: {
