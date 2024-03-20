@@ -24,7 +24,7 @@ const userSchema = mongoose.Schema({
   father_name: String,
   nid_number: { type: Number, required: true },
   birthday: Date,
-  gender: { type: String, enum: ["male", "female"], required: true },
+  gender: { type: String, enum: ["Male", "Female"], required: true },
   permanent_address: { type: String, required: true },
   present_address: { type: String, required: true },
 
@@ -35,8 +35,8 @@ const userSchema = mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "manager", "employee"],
-    default: "employee",
+    enum: ["Admin", "Manager", "Employee"],
+    default: "Employee",
   },
   password: {
     type: String,
@@ -44,7 +44,7 @@ const userSchema = mongoose.Schema({
   },
   marital_status: {
     type: String,
-    enum: ["married", "unmarried"],
+    enum: ["Married", "Unmarried"],
     required: true,
   },
   marriage_date: Date,
@@ -54,14 +54,15 @@ const userSchema = mongoose.Schema({
   account_number: { type: Number, required: true },
   swift_code: { type: String, required: true },
   routing_number: { type: Number, required: true },
+  mobile: { type: String, required: true },
   primary_payment_option: {
     type: String,
-    enum: ["bank", "bkash", "nogod", "roket"],
+    enum: ["Bank", "Bkash", "Nogod", "Roket"],
     required: true,
   },
-  bkash: { type: Number, required: true },
-  nogod: { type: Number, required: true },
-  roket: { type: Number, required: true },
+  bkash: { type: Number },
+  nogod: { type: Number },
+  roket: { type: Number },
   createdAt: {
     type: Date,
     default: Date.now,
