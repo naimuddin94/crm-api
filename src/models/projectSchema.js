@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
-  title: {
+  project_title: {
     type: String,
     required: true,
   },
@@ -13,7 +13,7 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  value: {
+  project_value: {
     type: Number,
     required: true,
   },

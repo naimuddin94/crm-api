@@ -18,5 +18,6 @@ userRouter.get("/role/:email", getUserRoleFn(User));
 userRouter.post("/", createFn(User));
 userRouter.put("/:id", updateFn(User));
 userRouter.delete("/:id", deleteFn(User));
+userRouter.post("/login", )
 
 module.exports = userRouter;

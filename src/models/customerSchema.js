@@ -19,10 +19,10 @@ const customerSchema = mongoose.Schema({
     required: true,
   },
 
-  father_name: String,
+  father_name: { type: String, required: true },
   nid_number: { type: Number, required: true },
   birthday: Date,
-  gender: { type: String, enum: ["male", "female"], required: true },
+  gender: { type: String, enum: ["Male", "Female"], required: true },
   permanent_address: { type: String, required: true },
   present_address: { type: String, required: true },
   createdAt: {
