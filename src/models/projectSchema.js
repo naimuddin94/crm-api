@@ -22,6 +22,7 @@ const projectSchema = new mongoose.Schema({
     ref: "Customer", // Reference to the Customer model
     required: true,
   },
+  documents: {type: [String]},
   created_at: {
     type: Date,
     default: Date.now,
