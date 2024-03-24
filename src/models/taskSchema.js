@@ -15,7 +15,7 @@ const taskSchema = new mongoose.Schema({
   },
   alert_by: {
     type: String,
-    enum: ["sms", "mail", "both"],
+    enum: ["SMS", "Mail", "Both"],
     required: true,
   },
   note: {
