@@ -1,18 +1,20 @@
+const bcrypt = require("bcrypt");
 const User = require("../models/userSchema");
-const createToken = require("../lib/createToken");
+const {
+  createAuthCookie,
+  clearUserCookie,
+} = require("../lib/userTokenHandler");
 
-const authentication = () => async (req, res) => {
+const userLoginFn = () => async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Find the user by username or email
-    const user = await User.findOne({
-      $or: [{ username }, { email: username }],
-    });
+    const user = await User.findOne({ email });
 
     if (!user) {
       // User not found
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
     // Compare passwords
@@ -20,22 +22,37 @@ const authentication = () => async (req, res) => {
 
     if (!isPasswordMatch) {
       // Passwords don't match
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid password" });
     }
 
-    // Passwords match, create authentication token
-    const token = createToken({
+    const userResponse = {
+      id: user._id,
+      name: user.first_name + " " + user.last_name,
       email: user.email,
       role: user.role,
-    });
+    };
 
-    // Send the auth token in the response
-    res
-      .cookie("token", token, { httpOnly: true })
-      .status(200)
-      .send({ role: user.role, message: "Login successful" });
+    // Create authentication cookie
+    createAuthCookie(req, res, next, userResponse);
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+const userLogoutFn = () => async (req, res) => {
+  console.log(req.body);
+  try {
+    res
+      .clearCookie("token", {
+        maxAge: 0,
+        secure: process.env.NODE_ENV === "production" ? true : false,
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
+      })
+      .send({ message: "cleared" });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+module.exports = { userLoginFn, userLogoutFn };

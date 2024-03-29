@@ -2,10 +2,13 @@ const createToken = require("./createToken");
 
 require("dotenv").config();
 
-const createAuthCookie = (req, res, next) => {
+const createAuthCookie = (req, res, next, userResponse) => {
   try {
-    const user = req.body;
-    const token = createToken(user);
+    const token = createToken({
+      email: userResponse.email,
+      role: userResponse.role,
+    });
+
 
     res
       .cookie("token", token, {
@@ -13,15 +16,15 @@ const createAuthCookie = (req, res, next) => {
         secure: process.env.NODE_ENV === "production" ? true : false,
         sameSite: process.env.NODE_ENV === "production" ? "none" : "strict",
       })
-      .send({ success: true });
-    next();
+      .send({ message: "Login successfully", user: userResponse });
   } catch (err) {
     next(err);
   }
 };
 
 const clearUserCookie = (req, res) => {
-  const email = req.body;
+  const token = req?.cookies?.token;
+  console.log("from userHandler 24", token);
   res
     .clearCookie("token", {
       maxAge: 0,

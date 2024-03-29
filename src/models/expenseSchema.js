@@ -7,7 +7,7 @@ const expensesSchema = new mongoose.Schema({
   },
   payment_method: {
     type: String,
-    enum: ["cash", "bank", "bkash", "roket", "nogod"],
+    enum: ["Cash", "Bank", "Bkash", "Roket", "Nogod"],
   },
   amount: {
     type: Number,

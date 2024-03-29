@@ -5,7 +5,7 @@ const {
   getSingleDataFn,
   updateFn,
   deleteFn,
-} = require("../lib/handerFunc");
+} = require("../lib/handlerFn");
 const Task = require("../models/taskSchema");
 
 const taskRouter = express.Router();

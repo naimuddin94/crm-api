@@ -5,7 +5,7 @@ const {
   getSingleDataFn,
   deleteFn,
   updateFn,
-} = require("../lib/handerFunc");
+} = require("../lib/handlerFn");
 const Project = require("../models/projectSchema");
 
 const projectRouter = express.Router();

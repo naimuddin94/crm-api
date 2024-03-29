@@ -5,7 +5,7 @@ const {
   getSingleDataFn,
   updateFn,
   deleteFn,
-} = require("../lib/handerFunc");
+} = require("../lib/handlerFn");
 const Expense = require("../models/expenseSchema");
 
 const expenseRouter = express.Router();
