@@ -1,3 +1,11 @@
+/*
+ * Title: PCL CRM Dashboard Application
+ * Description: API for administration
+ * Author: Md Naim Uddin
+ * Date: 25/03/2024
+ *
+ */
+
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");

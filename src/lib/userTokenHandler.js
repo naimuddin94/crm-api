@@ -9,7 +9,7 @@ const createAuthCookie = (req, res, next, userResponse) => {
       role: userResponse.role,
     });
 
-
+    // Set the cookie with the JWT
     res
       .cookie("token", token, {
         httpOnly: true,
@@ -23,8 +23,6 @@ const createAuthCookie = (req, res, next, userResponse) => {
 };
 
 const clearUserCookie = (req, res) => {
-  const token = req?.cookies?.token;
-  console.log("from userHandler 24", token);
   res
     .clearCookie("token", {
       maxAge: 0,

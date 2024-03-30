@@ -7,8 +7,6 @@ const {
   deleteFn,
   getUserRoleFn,
 } = require("../lib/handlerFn");
-
-const {userLoginFn} = require("../controller/authentication");
 const User = require("../models/userSchema");
 
 const userRouter = express.Router();

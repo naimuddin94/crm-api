@@ -5,6 +5,7 @@ const {
   clearUserCookie,
 } = require("../lib/userTokenHandler");
 
+// user login function
 const userLoginFn = () => async (req, res, next) => {
   try {
     const { email, password } = req.body;
@@ -40,6 +41,7 @@ const userLoginFn = () => async (req, res, next) => {
   }
 };
 
+// user logout function
 const userLogoutFn = () => async (req, res) => {
   console.log(req.body);
   try {

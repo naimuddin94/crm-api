@@ -1,3 +1,11 @@
+/*
+ * Title: PCL CRM Dashboard Application
+ * Description: API for administration
+ * Author: Md Naim Uddin
+ * Date: 25/03/2024
+ *
+ */
+
 require("dotenv").config();
 const http = require("http");
 const app = require("./src/app");
