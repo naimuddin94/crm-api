@@ -41,6 +41,12 @@ const createFn = (dbCollectionName) => async (req, res) => {
 const updateFn = (dbCollectionName) => async (req, res) => {
   try {
     const id = req.params.id;
+
+    // Exclude password field from req.body
+        if (req?.body?.password) {
+            delete req.body.password;
+    }
+    
     const result = await dbCollectionName.findByIdAndUpdate(id, req.body, {
       new: true,
     });

@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Md Naim Uddin",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
