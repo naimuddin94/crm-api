@@ -2,9 +2,7 @@ const User = require("../models/userSchema");
 
 const verifyAdmin = async (req, res, next) => {
   try {
-    const email = req.user.email;
-    const user = await User.findOne({ email });
-    const isAdmin = user?.role === "admin";
+    const isAdmin = req.user.role === "Admin";
     if (!isAdmin) {
       return res.status(403).send({ message: "forbidden access" });
     }
